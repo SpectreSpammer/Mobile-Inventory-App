@@ -31,7 +31,7 @@ public class StartPageActivity extends AppCompatActivity {
 
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+              public void onClick(View v) {
                 OpenSignup();
 
             }
