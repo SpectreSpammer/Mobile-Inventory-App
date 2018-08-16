@@ -18,8 +18,10 @@
         </activity>
         <activity android:name=".SignupActivity" />
         <activity android:name=".SigninActivity" />
-        <activity android:name=".InventoryActivity"
-            android:exported="true"></activity>
+        <activity
+            android:name=".InventoryActivity"
+            android:exported="true" />
+        <activity android:name=".AddItemActivity"></activity>
     </application>
 
 </manifest>
