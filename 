@@ -1,0 +1,36 @@
+[33mcommit 6080d5bc41c32b56fb2073ebd963568b2e4b755e[m[33m ([m[1;36mHEAD -> [m[1;32mkevinAddItem[m[33m)[m
+Author: Kevin Baguisa <kevinbaguisa@outlook.com>
+Date:   Thu Aug 16 10:24:01 2018 +0800
+
+    AddItemActivity Commit
+
+[33mcommit 7a1e4207510154a97328ffc4ac55a7e3dba0ddf3[m[33m ([m[1;31morigin/kevinInventory[m[33m, [m[1;31morigin/kevinAddItem[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mkevinInventory[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Kevin Baguisa <kevinbaguisa@outlook.com>
+Date:   Wed Aug 15 18:08:39 2018 +0800
+
+    added list view and button
+
+[33mcommit 9c74dc334c24e976d76fce4184fb1ff0bfafe0b9[m
+Merge: 01ecaa9 53f8422
+Author: Kevin Baguisa <kevinbaguisa@outlook.com>
+Date:   Wed Aug 15 12:31:04 2018 +0800
+
+    Merge branch 'kevin' into develop
+
+[33mcommit 53f8422eaa399242eec1c61237e16b671b8304b7[m[33m ([m[1;31morigin/kevin[m[33m)[m
+Author: Kevin Baguisa <kevinbaguisa@outlook.com>
+Date:   Wed Aug 15 12:27:50 2018 +0800
+
+    Initial commit
+
+[33mcommit 01ecaa9811c5b19183eed54175f9f842fb0513ef[m
+Author: raynand <raynandnavarra07@gmail.com>
+Date:   Wed Aug 15 11:30:33 2018 +0800
+
+    Home , Signin and Signup
+
+[33mcommit 7eb15786525e3a084d067ac8de0efcbf94935f99[m
+Author: raynand <raynandnavarra07@gmail.com>
+Date:   Wed Aug 15 11:23:54 2018 +0800
+
+    Hi
