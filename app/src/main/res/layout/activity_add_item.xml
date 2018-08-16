@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="340dp"
-        android:layout_height="223dp"
+        android:layout_height="222dp"
         android:layout_marginEnd="22dp"
         android:layout_marginLeft="22dp"
         android:layout_marginRight="22dp"
@@ -71,11 +71,14 @@
         android:layout_height="100dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/holo_red_light"
         android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="@+id/editText2"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editText2"
-        tools:layout_editor_absoluteY="374dp" />
+        app:layout_constraintTop_toTopOf="@+id/button3"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
