@@ -21,7 +21,8 @@
         <activity
             android:name=".InventoryActivity"
             android:exported="true" />
-        <activity android:name=".AddItemActivity" />
+        <activity android:name=".AddItemActivity"
+            android:exported="true"/>
         <activity android:name=".ViewItemActivity"></activity>
     </application>
 
