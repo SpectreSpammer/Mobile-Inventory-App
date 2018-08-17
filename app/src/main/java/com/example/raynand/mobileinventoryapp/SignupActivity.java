@@ -5,11 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class SignupActivity extends AppCompatActivity {
 
     private Button Signup;
     private Button Back;
+    private EditText username,password, confirmpass , emailaddress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,14 @@ public class SignupActivity extends AppCompatActivity {
 
         Signup = (Button)findViewById(R.id.btnSignup);
         Back = (Button)findViewById(R.id.btnBack);
+        username = (EditText)findViewById(R.id.etUsername);
+        password = (EditText)findViewById(R.id.etPassword);
+        confirmpass = (EditText)findViewById(R.id.etConfirmPass);
+        emailaddress = (EditText)findViewById(R.id.etEmail);
+
+
+
+        //setting their ID
 
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,6 +47,8 @@ public class SignupActivity extends AppCompatActivity {
 
     public void OpenSignin()
     {
+
+
         Intent intent = new Intent(this, SigninActivity.class);
         startActivity(intent);
     }
