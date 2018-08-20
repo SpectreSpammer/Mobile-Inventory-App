@@ -31,9 +31,9 @@ public class SigninActivity extends AppCompatActivity {
             String p = pass.getText().toString();
 
             String password =  helper.searchPass(us);
-            if ( p .equals((password)))
+            if (p .equals((password)))
             {
-                Intent intent = new Intent(this, SignupActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 intent.putExtra("Username", us);
                 startActivity(intent);
             }

@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 public class SignupActivity extends Activity {
 
-
     DatabaseHelper helper = new DatabaseHelper(this);
     private Button Signup;
     private Button Back;
@@ -23,13 +22,11 @@ public class SignupActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-
-
-
     }
 
     public void onClickSignup(View v) {
-        if (v.getId() == R.id.etLastName) {
+
+//        if (v.getId() == R.id.etLastName) {
             //Signup = (Button) findViewById(R.id.btnSignup);
             //Back = (Button) findViewById(R.id.btnBack);
             lastname = (EditText) findViewById(R.id.etLastName);
@@ -63,10 +60,12 @@ public class SignupActivity extends Activity {
 
                 helper.insertUserinfo(userinfo);
 
+                Toast pop = Toast.makeText(SignupActivity.this, "Success!", Toast.LENGTH_SHORT);
+                pop.show();
+
+                Intent intent = new Intent(this, SigninActivity.class);
+                startActivity(intent);
             }
-        }
-
+//        }
     }
-
-
 }
