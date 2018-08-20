@@ -30,7 +30,6 @@ public class SignupActivity extends Activity {
 
     public void onClickSignup(View v) {
         if (v.getId() == R.id.etLastName) {
-
             //Signup = (Button) findViewById(R.id.btnSignup);
             //Back = (Button) findViewById(R.id.btnBack);
             lastname = (EditText) findViewById(R.id.etLastName);
@@ -51,7 +50,6 @@ public class SignupActivity extends Activity {
             {
                 Toast pop = Toast.makeText(SignupActivity.this, "Password doesn`t match!", Toast.LENGTH_SHORT);
                 pop.show();
-
             }
 
             else
@@ -61,7 +59,7 @@ public class SignupActivity extends Activity {
                 userinfo.setFirstName(fname);
                 userinfo.setUsername(user);
                 userinfo.setPassword(pass);
-                userinfo.setEmail(lname);
+                userinfo.setEmail(emailadd);
 
                 helper.insertUserinfo(userinfo);
 

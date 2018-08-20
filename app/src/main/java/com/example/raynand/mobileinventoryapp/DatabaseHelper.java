@@ -10,7 +10,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    private static final int DATABASE_VERSION = 81718;
+//    private static final int DATABASE_VERSION = 81718;
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "MobileAccount.db";
     private static final String TABLE_NAME = "MobileAccount";
     private static final String COLUMN_ID = "id";
@@ -21,8 +22,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_EmailAddress = "EmailAddress";
     SQLiteDatabase db;
 
-    private static final String TABLE_CREATE = "create table MobileAccount (id integer primary key not null  , " +
-            "LastName text not null , FirstName text not null , UserName text not null , Password text not null );";
+    private static final String TABLE_CREATE = "create table MobileAccount (id integer primary key not null, " +
+            "LastName text not null, FirstName text not null, UserName text not null, Password text not null, EmailAddress text not null)";
 
 
     DatabaseHelper(Context context)
@@ -45,12 +46,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query , null);
         int count = cursor.getCount();
 
-        values.put(COLUMN_ID ,count);
-        values.put(COLUMN_LASTNAME , u.getLastname());
-        values.put(COLUMN_FIRSTNAME , u.getFirstName());
-        values.put( COLUMN_USERNAME , u.getUsername());
-        values.put (COLUMN_PASSWORD , u.getPassword());
-        values.put( COLUMN_EmailAddress , u.getEmail());
+        values.put(COLUMN_ID, count);
+        values.put(COLUMN_LASTNAME, u.getLastname());
+        values.put(COLUMN_FIRSTNAME, u.getFirstName());
+        values.put(COLUMN_USERNAME, u.getUsername());
+        values.put(COLUMN_PASSWORD, u.getPassword());
+        values.put(COLUMN_EmailAddress, u.getEmail());
 
         db.insert(TABLE_NAME , null , values);
         db.close();
@@ -59,26 +60,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public String searchPass(String username)
     {
-
         db = this.getReadableDatabase();
-        String query = "select UserName ,Password from " + TABLE_NAME;
-        Cursor cursor = db.rawQuery(query , null);
+        String query = "select UserName,Password from " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
 
         String auser , bpass;
         bpass = "Not Found";
 
         if (cursor.moveToFirst())
         {
-            do {
-            auser = cursor.getString(0);
-            bpass = cursor.getString(1);
+            do{
+                auser = cursor.getString(0);
+                bpass = cursor.getString(1);
 
-            if (auser .equals(username))
-            {
+                if (auser.equals(username)) {
                 bpass = cursor.getString(1);
                 break;
-
-            }
+                }
             }
             while (cursor.moveToNext());
         }

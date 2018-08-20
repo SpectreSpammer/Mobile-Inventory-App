@@ -19,12 +19,9 @@ public class SigninActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
-
-
     }
 
-    public  void onClickSignin (View v)
-
+    public void onClickSignin (View v)
     {
         if (v.getId() == R.id.btnSignin);
         {
@@ -37,7 +34,7 @@ public class SigninActivity extends AppCompatActivity {
             if ( p .equals((password)))
             {
                 Intent intent = new Intent(this, SignupActivity.class);
-                intent.putExtra("Username",us);
+                intent.putExtra("Username", us);
                 startActivity(intent);
             }
 
