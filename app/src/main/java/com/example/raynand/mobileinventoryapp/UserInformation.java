@@ -22,7 +22,7 @@ public class UserInformation {
         this.LastName = LastName;
     }
 
-    public String getFullname()
+    public String getLastname()
     {
         return this.LastName;
     }
@@ -43,7 +43,7 @@ public class UserInformation {
     {
             this.username = username;
     }
-    public String getUsername(String username)
+    public String getUsername()
     {
         return this.username;
     }
@@ -53,7 +53,7 @@ public class UserInformation {
     {
         this.password = password;
     }
-    public String getPassword(String password)
+    public String getPassword()
     {
         return this.password;
     }
@@ -64,7 +64,7 @@ public class UserInformation {
     {
         this.email = email;
     }
-    public String getEmail(String email)
+    public String getEmail()
     {
         return this.email;
     }

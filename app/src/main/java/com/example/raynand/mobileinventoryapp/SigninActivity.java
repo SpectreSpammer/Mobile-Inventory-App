@@ -5,10 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class SigninActivity extends AppCompatActivity {
 
 
+    DatabaseHelper helper = new DatabaseHelper(this);
     private Button Signin;
     private Button Back;
 
@@ -17,33 +20,33 @@ public class SigninActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
-        Signin = (Button)findViewById(R.id.btnSigin);
-        Back = (Button)findViewById(R.id.btnBack);
 
-        Signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                OpenSignin();
-            }
-        });
-
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                OpenHome();
-            }
-        });
     }
 
-    public void OpenSignin()
-    {
-        Intent intent = new Intent(this, InventoryActivity.class);
-        startActivity(intent);
-    }
+    public  void onClickSignin (View v)
 
-    public void OpenHome()
     {
-        Intent intent = new Intent(this, StartPageActivity.class);
-        startActivity(intent);
+        if (v.getId() == R.id.btnSignin);
+        {
+            EditText uname = (EditText)findViewById(R.id.etUsername);
+            String us = uname.getText().toString();
+            EditText pass = (EditText)findViewById(R.id.etPassword);
+            String p = pass.getText().toString();
+
+            String password =  helper.searchPass(us);
+            if ( p .equals((password)))
+            {
+                Intent intent = new Intent(this, SignupActivity.class);
+                intent.putExtra("Username",us);
+                startActivity(intent);
+            }
+
+            else
+            {
+                Toast pop = Toast.makeText(SigninActivity.this, "Username and Password don`t match!", Toast.LENGTH_SHORT);
+                pop.show();
+
+            }
+        }
     }
 }
