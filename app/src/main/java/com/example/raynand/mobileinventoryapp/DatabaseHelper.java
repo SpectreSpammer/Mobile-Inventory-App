@@ -18,6 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_USERNAME = "UserName";
     private static final String COLUMN_PASSWORD = "Password";
     private static final String COLUMN_EmailAddress = "EmailAddress";
+
     SQLiteDatabase db;
 
     private static final String TABLE_CREATE = "create table MobileAccount (id integer primary key not null, " +
@@ -71,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         {
             do{
                 auser = cursor.getString(0);
-                bpass = cursor.getString(1);
+              
 
                 if (auser.equals(username)) {
                 bpass = cursor.getString(1);

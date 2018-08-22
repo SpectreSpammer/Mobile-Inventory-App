@@ -26,7 +26,7 @@ public class SignupActivity extends Activity {
 
     public void onClickSignup(View v) {
 
-//        if (v.getId() == R.id.etLastName) {
+       // if (v.getId() == R.id.btnSignup) {
             //Signup = (Button) findViewById(R.id.btnSignup);
             //Back = (Button) findViewById(R.id.btnBack);
             lastname = (EditText) findViewById(R.id.etLastName);
@@ -66,6 +66,6 @@ public class SignupActivity extends Activity {
                 Intent intent = new Intent(this, SigninActivity.class);
                 startActivity(intent);
             }
-//        }
+        }
     }
-}
+//}
