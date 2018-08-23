@@ -72,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         {
             do{
                 auser = cursor.getString(0);
-              
+
 
                 if (auser.equals(username)) {
                 bpass = cursor.getString(1);
