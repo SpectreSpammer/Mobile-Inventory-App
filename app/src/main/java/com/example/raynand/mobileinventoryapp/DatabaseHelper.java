@@ -19,6 +19,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_PASSWORD = "Password";
     private static final String COLUMN_EmailAddress = "EmailAddress";
 
+
+    private static final String TABLE_ITEMNAME = "Items";
+    private static final String COLUMN_ITEMID = "ItemId";
+    private static final String COLUMN_LASTNAME = "L";
+    private static final String COLUMN_FIRSTNAME = "FirstName";
+    private static final String COLUMN_USERNAME = "UserName";
+    private static final String COLUMN_PASSWORD = "Password";
+    private static final String COLUMN_EmailAddress = "EmailAddress";
+
+
+
     SQLiteDatabase db;
 
     private static final String TABLE_CREATE = "create table MobileAccount (id integer primary key not null, " +
