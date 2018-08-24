@@ -11,19 +11,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 //    private static final int DATABASE_VERSION = 81718;
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "MobileAccount.db";
-    private static final String TABLE_NAME = "MobileAccount";
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_LASTNAME = "LastName";
-    private static final String COLUMN_FIRSTNAME = "FirstName";
-    private static final String COLUMN_USERNAME = "UserName";
-    private static final String COLUMN_PASSWORD = "Password";
-    private static final String COLUMN_EmailAddress = "EmailAddress";
+    private static final String TABLE_ACCNAME = "MobileAccount";
+    private static final String COLUMN_ACCID = "id";
+    private static final String COLUMN_ACCLASTNAME = "LastName";
+    private static final String COLUMN_ACCFIRSTNAME = "FirstName";
+    private static final String COLUMN_ACCUSERNAME = "UserName";
+    private static final String COLUMN_ACCPASSWORD = "Password";
+    private static final String COLUMN_ACCEmailAddress = "EmailAddress";
+    // Account Database and  Table Name
+
+    public static final String TABLE_ITEMNAME = "Items";
+    public static final String ITEMID = "ID";
+    public static final String ITEMIMAGE = "IMAGE";
+    public static final String ITEMNAME = "NAME";
+    public static final String ITEMDESCRI = "DESCRIPTION";
+    // Items Table
 
     SQLiteDatabase db;
 
-    private static final String TABLE_CREATE = "create table MobileAccount (id integer primary key not null, " +
+    private static final String TABLE_ACCCREATE = "create table MobileAccount (id integer primary key not null, " +
             "LastName text not null, FirstName text not null, UserName text not null, Password text not null, EmailAddress text not null)";
 
+    private static final String TABLE_ITEMCREATE = "create table items (ID integer primary key not null, " +
+     "IMAGE text not null, NAME text not null, DESCRIPTION text not null)";
 
     DatabaseHelper(Context context)
     {
@@ -34,8 +44,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-            db.execSQL(TABLE_CREATE);
-            this.db = db;
+            db.execSQL(TABLE_ACCCREATE);
+            db.execSQL(TABLE_ITEMCREATE);
+            //this.db = db;
     }
 
     public  void insertUserinfo(UserInformation u)
@@ -47,22 +58,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query , null);
         int count = cursor.getCount();
 
-        values.put(COLUMN_ID, count);
-        values.put(COLUMN_LASTNAME, u.getLastname());
-        values.put(COLUMN_FIRSTNAME, u.getFirstName());
-        values.put(COLUMN_USERNAME, u.getUsername());
-        values.put(COLUMN_PASSWORD, u.getPassword());
-        values.put(COLUMN_EmailAddress, u.getEmail());
+        values.put(COLUMN_ACCID, count);
+        values.put(COLUMN_ACCLASTNAME, u.getLastname());
+        values.put(COLUMN_ACCFIRSTNAME, u.getFirstName());
+        values.put(COLUMN_ACCUSERNAME, u.getUsername());
+        values.put(COLUMN_ACCPASSWORD, u.getPassword());
+        values.put(COLUMN_ACCEmailAddress, u.getEmail());
 
-        db.insert(TABLE_NAME , null , values);
+        db.insert(TABLE_ACCNAME , null , values);
         db.close();
 
     }
+    //inserting of User info in user information class
 
     public String searchPass(String username)
     {
         db = this.getReadableDatabase();
-        String query = "select UserName,Password from " + TABLE_NAME;
+        String query = "select UserName,Password from " + TABLE_ACCNAME;
         Cursor cursor = db.rawQuery(query, null);
 
         String auser , bpass;
@@ -83,13 +95,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return bpass;
     }
+    //about Sign in activity
+
+
+    public boolean addData(String image, String name, String description)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ITEMIMAGE, image);
+        contentValues.put(ITEMNAME, name);
+        contentValues.put(ITEMDESCRI, description);
+        long result = db.insert(TABLE_ITEMNAME, null, contentValues);
+        if(result == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    //TODO: add image parameter to addData method
+    //TODO: add image column and argument to contentValues.put()
+    //items inserting of data
+
+    public Cursor getListContents()
+        {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_ITEMNAME, null);
+        return data;
+        }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
-            String query = "DROP TABLE IF EXISTS " +TABLE_NAME;
+            String query = "DROP TABLE IF EXISTS " +TABLE_ACCNAME;
+            String query1 = "DROP TABLE IF EXISTS " +TABLE_ITEMNAME;
             //String query = "DROP TABLE IF EXIST"+TABLE_NAME;
+
             db.execSQL(query);
+            db.execSQL(query1);
             this.onCreate(db);
     }
 }
