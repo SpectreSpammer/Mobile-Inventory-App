@@ -8,9 +8,9 @@ import android.widget.Button;
 
 public class StartPageActivity extends AppCompatActivity {
 
-
     private Button Signin;
     private Button Signup;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +27,6 @@ public class StartPageActivity extends AppCompatActivity {
 
             }
         });
-
-
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
               public void onClick(View v) {
@@ -36,9 +34,8 @@ public class StartPageActivity extends AppCompatActivity {
 
             }
         });
-
-
         }
+
     public void OpenSignin()
     {
         Intent intent = new Intent(this, SigninActivity.class);

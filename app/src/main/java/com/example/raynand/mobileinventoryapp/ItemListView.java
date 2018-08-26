@@ -12,11 +12,9 @@ import java.util.ArrayList;
 
 public class ItemListView extends AppCompatActivity {
 
-    DatabaseHelper1 myDB;
+    DatabaseHelper myDB;
     ArrayList<Item> itemList;
-
     ListView listView;
-
     Item item;
 
     @Override
@@ -26,7 +24,7 @@ public class ItemListView extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listView);
 
-        myDB = new DatabaseHelper1(this);
+        myDB = new DatabaseHelper(this);
 
         itemList = new ArrayList<>();
         Cursor data = myDB.getListContents();
@@ -36,11 +34,9 @@ public class ItemListView extends AppCompatActivity {
             Toast.makeText(ItemListView.this, "There is nothing in the database.", Toast.LENGTH_LONG).show();
         }
 
-        //TODO: add image column index to Item constructor data.getString() parameter
         else
         {
             while(data.moveToNext()){
-                //TODO:
                 item = new Item(data.getString(1), data.getString(2), data.getString(3));//
 
                 itemList.add(item);

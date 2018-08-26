@@ -5,12 +5,10 @@ public class UserInformation {
     int id;
     String  LastName,FirstName ,username,password , email;
 
-
     public void setId (int id)
     {
         this.id = id;
     }
-
     public int getId()
     {
         return this.id;
@@ -21,7 +19,6 @@ public class UserInformation {
     {
         this.LastName = LastName;
     }
-
     public String getLastname()
     {
         return this.LastName;
@@ -32,7 +29,6 @@ public class UserInformation {
     {
         this.FirstName = FirstName;
     }
-
     public String getFirstName()
     {
         return FirstName;
@@ -47,7 +43,7 @@ public class UserInformation {
     {
         return this.username;
     }
-        //username
+    //username
 
     public void setPassword(String password)
     {
@@ -58,7 +54,6 @@ public class UserInformation {
         return this.password;
     }
     //password
-
 
     public void setEmail(String email)
     {
