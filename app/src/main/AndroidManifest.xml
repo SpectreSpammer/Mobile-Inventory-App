@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.raynand.mobileinventoryapp">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -20,9 +20,10 @@
         </activity>
         <activity android:name=".SignupActivity" />
         <activity android:name=".SigninActivity" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".AddEdit" />
-        <activity android:name=".ItemListView"></activity>
+        <activity android:name=".ItemListView" />
+        <activity android:name=".ViewItemClicked" />
+        <activity android:name=".EditItem"></activity>
     </application>
 
 </manifest>
