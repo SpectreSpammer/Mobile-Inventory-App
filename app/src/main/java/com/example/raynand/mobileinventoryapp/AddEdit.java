@@ -31,6 +31,7 @@ public class AddEdit extends AppCompatActivity {
     Button btnAdd, btnCancel, addImage;
     DatabaseHelper myDB;
 
+
     Item imageToStr;
 
     @Override
@@ -38,10 +39,14 @@ public class AddEdit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit);
 
+        ItemListView edit = new ItemListView();
+
         etName = (EditText) findViewById(R.id.aeName);
         etDesc = (EditText) findViewById(R.id.aeDescription);
         btnAdd = (Button) findViewById(R.id.addBtn);
         btnCancel = (Button) findViewById(R.id.cancelBtn);
+        imageView = (ImageView) findViewById(R.id.imageView);
+        addImage = (Button) findViewById(R.id.aeAddImg);
         myDB = new DatabaseHelper(this);
         imageToStr = new Item();
 
@@ -72,9 +77,6 @@ public class AddEdit extends AppCompatActivity {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST);
         }
-
-        imageView = (ImageView) findViewById(R.id.imageView);
-        addImage = (Button) findViewById(R.id.aeAddImg);
 
         addImage.setOnClickListener(new View.OnClickListener(){
             @Override

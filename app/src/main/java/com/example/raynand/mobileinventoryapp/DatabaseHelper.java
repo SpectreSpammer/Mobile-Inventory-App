@@ -1,15 +1,10 @@
 package com.example.raynand.mobileinventoryapp;
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -131,26 +126,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         this.onCreate(db);
     }
 
-    public List<Item> getAllItems(){
-        List<Item> itemList = new ArrayList<>();
-        SQLiteDatabase db = getReadableDatabase();
-
-        @SuppressLint("Recycle") Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_ITEMNAME, null);
-
-        if(cursor.moveToFirst()) {
-            do {
-                //int id = cursor.getInt(0);
-                String image = cursor.getString(1);
-                String name = cursor.getString(2);
-                String desc = cursor.getString(3);
-
-                Item item = new Item(image, name, desc);
-                itemList.add(item);
-            } while (cursor.moveToNext());
-        }
-        return itemList;
-    }
+//    public String queryEditString(){
+//        String query = "SELECT IMAGE, NAME, DESCRIPTION FROM " + TABLE_ITEMNAME;
+//        db.execSQL(query);
+//        return query;
+//    }
+//    public Cursor queryEditCursor(){
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        Cursor data = db.rawQuery("SELECT IMAGE, NAME, DESCRIPTION FROM " + TABLE_ITEMNAME, null);
+//        return data;
+//    }
 }
 
 //https://www.youtube.com/watch?v=NT1qxmqH1eM
 //part 1 of the tutorial
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

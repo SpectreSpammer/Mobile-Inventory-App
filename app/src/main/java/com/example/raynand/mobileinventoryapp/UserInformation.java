@@ -3,7 +3,7 @@ package com.example.raynand.mobileinventoryapp;
 public class UserInformation {
 
     int id;
-    String  LastName,FirstName ,username,password , email;
+    String  LastName, FirstName, username, password, email;
 
     public void setId (int id)
     {

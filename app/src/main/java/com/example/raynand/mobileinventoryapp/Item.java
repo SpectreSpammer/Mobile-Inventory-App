@@ -3,12 +3,24 @@ package com.example.raynand.mobileinventoryapp;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
-
 import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 
-public class Item {
+public class Item implements Serializable{
 
     private String image, name, description;
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Item(){
 
@@ -28,6 +40,10 @@ public class Item {
 
     public Bitmap getImage(){
         return stringToBitmap(this.image);
+    }
+
+    public String getImageString(){
+        return image;
     }
 
     public String bitmapToString(Bitmap bitmap){

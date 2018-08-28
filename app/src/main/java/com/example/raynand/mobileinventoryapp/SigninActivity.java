@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 public class SigninActivity extends AppCompatActivity {
 
-
     DatabaseHelper helper = new DatabaseHelper(this);
     private Button Signin;
     private Button Back;

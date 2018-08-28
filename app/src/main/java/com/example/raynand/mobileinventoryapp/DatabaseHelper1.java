@@ -27,7 +27,6 @@
 //
 //    @Override
 //    public void onCreate(SQLiteDatabase db){
-//        //TODO:
 //        String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, IMAGE TEXT, NAME TEXT, DESCRIPTION TEXT)";//
 ////        String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
 ////                " NAME TEXT, DESCRIPTION TEXT)";

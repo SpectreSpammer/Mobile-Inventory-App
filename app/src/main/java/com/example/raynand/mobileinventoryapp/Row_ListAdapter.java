@@ -15,6 +15,9 @@ public class Row_ListAdapter extends ArrayAdapter<Item> {
     private LayoutInflater mInflater;
     private ArrayList<Item> items;
     private int mViewResourceId;
+    ImageView image;
+    TextView name;
+    TextView description;
 
     public Row_ListAdapter(Context context, int textViewResourceId, ArrayList<Item> items){
         super(context, textViewResourceId, items);
@@ -32,9 +35,9 @@ public class Row_ListAdapter extends ArrayAdapter<Item> {
 
         if(item != null){
 
-            ImageView image = (ImageView) convertView.findViewById(R.id.iconIV);
-            TextView name = (TextView) convertView.findViewById(R.id.nameTV);
-            TextView description = (TextView) convertView.findViewById(R.id.descTV);
+            image = (ImageView) convertView.findViewById(R.id.iconIV);
+            name = (TextView) convertView.findViewById(R.id.nameTV);
+            description = (TextView) convertView.findViewById(R.id.descTV);
 
             if(image != null){
                 image.setImageBitmap(item.getImage());
