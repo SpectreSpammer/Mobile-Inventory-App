@@ -3,58 +3,56 @@ package com.example.raynand.mobileinventoryapp;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
-
 import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 
-public class Item {
+public class Item implements Serializable{
 
-    //TODO: create image variable
-    private String image;//
+    private String image, name, description;
 
-    private String name;
-    private String description;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public Item(){
 
     }
 
-    //TODO: add image parameter to constructor
     public Item(Bitmap image, String name, String description){
         this.image = bitmapToString(image);
         this.name = name;
         this.description = description;
-    }//
+    }
 
-    //TODO:
     public Item(String image, String name, String description){
         this.image=image;
         this.name=name;
         this.description=description;
     }
-//    public Item(String name, String description){
-//        this.name = name;
-//        this.description = description;
-//    }
 
-    //TODO:declare get method for image
     public Bitmap getImage(){
         return stringToBitmap(this.image);
-    }//
+    }
 
-    //TODO:
-//    public String getImageAsString(){
-//        return this.image;
-//    }
+    public String getImageString(){
+        return image;
+    }
 
-    //TODO:
     public String bitmapToString(Bitmap bitmap){
         ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
         byte[] b = byteArray.toByteArray();
         return Base64.encodeToString(b, Base64.DEFAULT);
-    }//
+    }
 
-    //TODO:
     public Bitmap stringToBitmap(String string){
         Bitmap bitmap = null;
         try{
@@ -64,7 +62,7 @@ public class Item {
             exception.printStackTrace();
         }
         return bitmap;
-    }//
+    }
 
     public String getName() {
         return name;

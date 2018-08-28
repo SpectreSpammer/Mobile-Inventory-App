@@ -21,22 +21,16 @@ import android.widget.Toast;
 
 public class AddEdit extends AppCompatActivity {
 
-    //
     private static final int PERMISSION_REQUEST = 0;
     private static final int RESULT_LOAD_IMAGE = 1;
 
-    //TODO: use imageView field as the variable to store the image in the
-    Bitmap image;//
-    Bitmap bm;//
-    String imgToStr;//
-
+    Bitmap bm;
+    String imgToStr;
     ImageView imageView;
-    Button addImage;
-    //
-
     EditText etName, etDesc;
-    Button btnAdd, btnCancel;
-    DatabaseHelper1 myDB;
+    Button btnAdd, btnCancel, addImage;
+    DatabaseHelper myDB;
+
 
     Item imageToStr;
 
@@ -45,23 +39,21 @@ public class AddEdit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_edit);
 
-        //
+        ItemListView edit = new ItemListView();
+
         etName = (EditText) findViewById(R.id.aeName);
         etDesc = (EditText) findViewById(R.id.aeDescription);
         btnAdd = (Button) findViewById(R.id.addBtn);
         btnCancel = (Button) findViewById(R.id.cancelBtn);
-        myDB = new DatabaseHelper1(this);
+        imageView = (ImageView) findViewById(R.id.imageView);
+        addImage = (Button) findViewById(R.id.aeAddImg);
+        myDB = new DatabaseHelper(this);
         imageToStr = new Item();
-
-        //TODO: create variable that contains image, add it as an argument to the AddData method
-        //TODO: set image as blank after successfully adding it
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                //TODO: image = ((BitmapDrawable)selectedImageView.getDrawable()).getBitmap();
-                //image = ((BitmapDrawable)selectedImageView.getDrawable()).getBitmap();//
                 bm = ((BitmapDrawable)imageView.getDrawable()).getBitmap();
                 imgToStr = imageToStr.bitmapToString(bm);
                 String name = etName.getText().toString();
@@ -69,9 +61,7 @@ public class AddEdit extends AppCompatActivity {
 
                 if(name.length()!= 0 && description.length()!= 0){
 
-                    //TODO: AddData(image, name, description);
-                    AddData(imgToStr, name, description);//
-                    //AddData(name, description);
+                    AddData(imgToStr, name, description);
                     etName.setText("");
                     etDesc.setText("");
 
@@ -84,13 +74,9 @@ public class AddEdit extends AppCompatActivity {
             }
         });
 
-        //
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST);
         }
-
-        imageView = (ImageView) findViewById(R.id.imageView);
-        addImage = (Button) findViewById(R.id.aeAddImg);
 
         addImage.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -100,10 +86,8 @@ public class AddEdit extends AppCompatActivity {
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
             }
         });
-        //
     }
 
-    //
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
@@ -133,21 +117,14 @@ public class AddEdit extends AppCompatActivity {
                 }
         }
     }
-    //
-
-    //TODO: add image parameter to AddData method
-    //TODO: add image argument to insertData boolean through addData method used by myDB object
 
     public void AddData(String image, String name, String desc){
 
         boolean insertData = myDB.addData(image, name, desc);
 
-        if(insertData)
-        {
+        if(insertData) {
             Toast.makeText(AddEdit.this, "Data inserted successfully!", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
+        } else {
             Toast.makeText(AddEdit.this, "Something went wrong!", Toast.LENGTH_LONG).show();
         }
     }
