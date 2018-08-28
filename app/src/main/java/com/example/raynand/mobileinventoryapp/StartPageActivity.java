@@ -8,15 +8,25 @@ import android.widget.Button;
 
 public class StartPageActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
     private Button Signin;
     private Button Signup;
 
+=======
+
+    private Button Signin;
+    private Button Signup;
+>>>>>>> kevinbackup
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startpage);
 
+<<<<<<< HEAD
         getSupportActionBar().setTitle("BOBONG APP by Gadon" );
+=======
+        getSupportActionBar().setTitle("BOBONG APP by Gadon " );
+>>>>>>> kevinbackup
         Signin = (Button)findViewById(R.id.btnSignin);
         Signup = (Button)findViewById(R.id.btnSignup);
 
@@ -27,6 +37,11 @@ public class StartPageActivity extends AppCompatActivity {
 
             }
         });
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> kevinbackup
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
               public void onClick(View v) {
@@ -34,8 +49,14 @@ public class StartPageActivity extends AppCompatActivity {
 
             }
         });
+<<<<<<< HEAD
         }
 
+=======
+
+
+        }
+>>>>>>> kevinbackup
     public void OpenSignin()
     {
         Intent intent = new Intent(this, SigninActivity.class);

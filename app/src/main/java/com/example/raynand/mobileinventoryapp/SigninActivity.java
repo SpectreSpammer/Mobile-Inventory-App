@@ -10,6 +10,10 @@ import android.widget.Toast;
 
 public class SigninActivity extends AppCompatActivity {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> kevinbackup
     DatabaseHelper helper = new DatabaseHelper(this);
     private Button Signin;
     private Button Back;
@@ -32,7 +36,11 @@ public class SigninActivity extends AppCompatActivity {
             String password =  helper.searchPass(us);
             if (p .equals((password)))
             {
+<<<<<<< HEAD
                 Intent intent = new Intent(this, ItemListView.class);
+=======
+                Intent intent = new Intent(this, MainActivity.class);
+>>>>>>> kevinbackup
                 intent.putExtra("Username", us);
                 startActivity(intent);
             }

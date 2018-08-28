@@ -1,7 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
+<<<<<<< HEAD
     compileSdkVersion 26
+=======
+    compileSdkVersion 27
+>>>>>>> kevinbackup
     defaultConfig {
         applicationId "com.example.raynand.mobileinventoryapp"
         minSdkVersion 14
@@ -19,7 +23,11 @@ android {
 }
 
 dependencies {
+<<<<<<< HEAD
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+=======
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+>>>>>>> kevinbackup
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'

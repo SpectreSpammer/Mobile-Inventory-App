@@ -3,12 +3,21 @@ package com.example.raynand.mobileinventoryapp;
 public class UserInformation {
 
     int id;
+<<<<<<< HEAD
     String  LastName, FirstName, username, password, email;
+=======
+    String  LastName,FirstName ,username,password , email;
+
+>>>>>>> kevinbackup
 
     public void setId (int id)
     {
         this.id = id;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> kevinbackup
     public int getId()
     {
         return this.id;
@@ -19,6 +28,10 @@ public class UserInformation {
     {
         this.LastName = LastName;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> kevinbackup
     public String getLastname()
     {
         return this.LastName;
@@ -29,6 +42,10 @@ public class UserInformation {
     {
         this.FirstName = FirstName;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> kevinbackup
     public String getFirstName()
     {
         return FirstName;
@@ -43,7 +60,11 @@ public class UserInformation {
     {
         return this.username;
     }
+<<<<<<< HEAD
     //username
+=======
+        //username
+>>>>>>> kevinbackup
 
     public void setPassword(String password)
     {
@@ -55,6 +76,10 @@ public class UserInformation {
     }
     //password
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> kevinbackup
     public void setEmail(String email)
     {
         this.email = email;

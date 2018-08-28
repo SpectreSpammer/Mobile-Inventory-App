@@ -2,6 +2,10 @@ package com.example.raynand.mobileinventoryapp;
 
 import android.app.Activity;
 import android.content.Intent;
+<<<<<<< HEAD
+=======
+import android.support.v7.app.AppCompatActivity;
+>>>>>>> kevinbackup
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +24,10 @@ public class SignupActivity extends Activity {
         {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+<<<<<<< HEAD
+=======
+
+>>>>>>> kevinbackup
     }
 
     public void onClickSignup(View v) {
