@@ -31,7 +31,7 @@ public class ItemListView extends AppCompatActivity {
 
         int numRows = data.getCount();
         if(numRows == 0){
-            Toast.makeText(ItemListView.this, "There is nothing in the database.", Toast.LENGTH_LONG).show();
+            Toast.makeText(ItemListView.this, "There is nothing in the database.", Toast.LENGTH_SHORT).show();
         } else {
             while(data.moveToNext()){
                 item = new Item(data.getString(1), data.getString(2), data.getString(3));

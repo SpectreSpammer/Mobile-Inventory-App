@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/viewImage"
-        android:layout_width="350dp"
-        android:layout_height="221dp"
+        android:layout_width="match_parent"
+        android:layout_height="231dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -22,13 +22,12 @@
 
     <TextView
         android:id="@+id/viewName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:text="Name (textview)"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,43 +37,51 @@
 
     <TextView
         android:id="@+id/viewDesc"
-        android:layout_width="350dp"
-        android:layout_height="142dp"
+        android:layout_width="match_parent"
+        android:layout_height="173dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
         android:text="Description (textview)"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewName" />
 
-    <Button
-        android:id="@+id/btnEdit"
-        android:layout_width="162dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="Edit"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/viewDesc"
+        app:layout_constraintVertical_bias="1.0">
 
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="164dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:text="Delete"
-        app:layout_constraintBottom_toBottomOf="@+id/btnEdit"
-        app:layout_constraintEnd_toEndOf="@+id/viewImage"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toEndOf="@+id/btnEdit"
-        app:layout_constraintTop_toTopOf="@+id/btnEdit"
-        app:layout_constraintVertical_bias="0.0" />
+        <Button
+            android:id="@+id/btnEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_border_black1"
+            android:text="Edit"
+            tools:layout_editor_absoluteX="207dp"
+            tools:layout_editor_absoluteY="394dp" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/btn_border_black"
+            android:text="Delete"
+            tools:layout_editor_absoluteX="72dp"
+            tools:layout_editor_absoluteY="394dp" />
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

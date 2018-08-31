@@ -30,8 +30,6 @@ public class AddEdit extends AppCompatActivity {
     EditText etName, etDesc;
     Button btnAdd, btnCancel, addImage;
     DatabaseHelper myDB;
-
-
     Item imageToStr;
 
     @Override
@@ -47,6 +45,7 @@ public class AddEdit extends AppCompatActivity {
         btnCancel = (Button) findViewById(R.id.cancelBtn);
         imageView = (ImageView) findViewById(R.id.imageView);
         addImage = (Button) findViewById(R.id.aeAddImg);
+        btnCancel = (Button) findViewById(R.id.cancelBtn2);
         myDB = new DatabaseHelper(this);
         imageToStr = new Item();
 
@@ -60,12 +59,13 @@ public class AddEdit extends AppCompatActivity {
                 String description = etDesc.getText().toString();
 
                 if(name.length()!= 0 && description.length()!= 0){
+                    Intent intent = new Intent(AddEdit.this, ItemListView.class);
 
                     AddData(imgToStr, name, description);
+
                     etName.setText("");
                     etDesc.setText("");
 
-                    Intent intent = new Intent(AddEdit.this, ItemListView.class);
                     startActivity(intent);
 
                 } else {
@@ -84,6 +84,14 @@ public class AddEdit extends AppCompatActivity {
                 Intent i = new Intent(Intent.ACTION_PICK,
                         MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddEdit.this, ItemListView.class);
+                startActivity(intent);
             }
         });
     }
@@ -119,8 +127,8 @@ public class AddEdit extends AppCompatActivity {
     }
 
     public void AddData(String image, String name, String desc){
-        boolean insertData = myDB.addData(image, name, desc);
 
+        boolean insertData = myDB.addData(image, name, desc);
         if(insertData) {
             Toast.makeText(AddEdit.this, "Data inserted successfully!", Toast.LENGTH_LONG).show();
         } else {

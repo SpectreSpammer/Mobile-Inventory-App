@@ -1,34 +1,25 @@
 package com.example.raynand.mobileinventoryapp;
 
-import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
-import android.net.Uri;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 
 public class ViewItemClicked extends AppCompatActivity {
 
     ImageView image;
     TextView name, desc;
-    Item item, passImage;
+    Item item;
     Button editBtn, delBtn;
-    String passName, passDesc, bmToStr;
+    String passName, passDesc, delDesc;
+    DatabaseHelper db;
+
+    //int itemID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +37,11 @@ public class ViewItemClicked extends AppCompatActivity {
         name.setText(item.getName());
         desc.setText(item.getDescription());
 
-
         editBtn = (Button) findViewById(R.id.btnEdit);
         delBtn = (Button) findViewById(R.id.btnDelete);
+
+        db = new DatabaseHelper(this);
+        delDesc = desc.getText().toString();
 
         editBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -66,6 +59,15 @@ public class ViewItemClicked extends AppCompatActivity {
                 b.putString("DESCRIPTION", passDesc);
 
                 intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
+
+        delBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                db.deleteRow(delDesc);
+                Intent intent = new Intent(ViewItemClicked.this, ItemListView.class);
                 startActivity(intent);
             }
         });

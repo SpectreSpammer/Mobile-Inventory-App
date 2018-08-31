@@ -36,19 +36,15 @@
 
     <Button
         android:id="@+id/btnSignin"
-        android:layout_width="360dp"
+        android:layout_width="292dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="200dp"
-        android:background="@android:color/transparent"
         android:alpha=".5"
-        android:textColor="#FFFFFF"
         android:onClick="onClickSignin"
         android:text="sign in"
-        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/etPassword"
-        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="@+id/etPassword"
         app:layout_constraintTop_toBottomOf="@+id/etPassword" />
 </android.support.constraint.ConstraintLayout>

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -32,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     SQLiteDatabase db;
 
-    private static final String TABLE_ACCCREATE = "create table MobileAccount (id integer primary key not null, " +
+    private static final String TABLE_ACCCREATE = "create table Account (id integer primary key not null, " +
             "LastName text not null, FirstName text not null, UserName text not null, Password text not null, EmailAddress text not null)";
 
     private static final String TABLE_ITEMCREATE = "create table items (ID integer primary key not null, " +
@@ -96,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     //about Sign in activity
 
-
+//    public long addData(String image, String name, String description) {
     public boolean addData(String image, String name, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -106,6 +108,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(ITEMDESCRI, description);
 
         long result = db.insert(TABLE_ITEMNAME, null, contentValues);
+
+//        return db.insert(TABLE_ITEMNAME, null, contentValues);
 
         if(result == -1){
             return false;
@@ -134,35 +138,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-//    public String queryEditString(){
-//        String query = "SELECT IMAGE, NAME, DESCRIPTION FROM " + TABLE_ITEMNAME;
-//        db.execSQL(query);
-//        return query;
-//    }
-//    public Cursor queryEditCursor(){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        Cursor data = db.rawQuery("SELECT IMAGE, NAME, DESCRIPTION FROM " + TABLE_ITEMNAME, null);
-//        return data;
-//    }
+    public void deleteRow(String desc) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.execSQL("DELETE FROM " + TABLE_ITEMNAME + " WHERE " + ITEMDESCRI + " = '" + desc + "'");
+        database.close();
+    }
+
+    //get ID of row from the item clicked in the listview
+    public void deleteRow1(int ID){
+        SQLiteDatabase database = this.getWritableDatabase();
+        database.execSQL("DELETE FROM " + TABLE_ITEMNAME + " WHERE " + ITEMID + " = '" + ID + "'");
+        database.close();
+    }
 }
 
 //https://www.youtube.com/watch?v=NT1qxmqH1eM
 //part 1 of the tutorial
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
