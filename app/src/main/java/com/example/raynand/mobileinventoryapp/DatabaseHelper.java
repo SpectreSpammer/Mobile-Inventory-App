@@ -32,7 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     SQLiteDatabase db;
 
-    private static final String TABLE_ACCCREATE = "create table MobileAccount (id integer primary key not null, " +
+    private static final String TABLE_ACCCREATE = "create table Account (id integer primary key not null, " +
             "LastName text not null, FirstName text not null, UserName text not null, Password text not null, EmailAddress text not null)";
 
     private static final String TABLE_ITEMCREATE = "create table items (ID integer primary key not null, " +
@@ -148,6 +148,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 //https://www.youtube.com/watch?v=NT1qxmqH1eM
 //part 1 of the tutorial
+//https://www.youtube.com/watch?v=KxlLsk5j3rY
+//part 2
+//https://www.youtube.com/watch?v=A6Jq7NVBVxU
+//part 3
 
 
 

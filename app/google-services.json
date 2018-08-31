@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "832066590417",
+    "firebase_url": "https://mobile-inventory-app.firebaseio.com",
+    "project_id": "mobile-inventory-app",
+    "storage_bucket": "mobile-inventory-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:832066590417:android:2ee4977da3c18736",
+        "android_client_info": {
+          "package_name": "com.example.raynand.mobileinventoryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "832066590417-2t99bhe9v29k79h3tp6e750t0545nhro.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5nVtSsfZL2OM_dO-4kxrXz9D2h6Qmzgo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

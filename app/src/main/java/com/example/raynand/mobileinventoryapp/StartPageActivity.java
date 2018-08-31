@@ -16,7 +16,7 @@ public class StartPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startpage);
 
-        getSupportActionBar().setTitle("BOBONG APP by Gadon" );
+
         Signin = (Button)findViewById(R.id.btnSignin);
         Signup = (Button)findViewById(R.id.btnSignup);
 

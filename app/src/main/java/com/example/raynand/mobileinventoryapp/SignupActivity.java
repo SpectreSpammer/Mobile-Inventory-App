@@ -2,11 +2,20 @@ package com.example.raynand.mobileinventoryapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+
+import static android.content.ContentValues.TAG;
 
 public class SignupActivity extends Activity {
 
@@ -20,13 +29,13 @@ public class SignupActivity extends Activity {
         {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+
     }
 
     public void onClickSignup(View v) {
 
-       // if (v.getId() == R.id.btnSignup) {
-            //Signup = (Button) findViewById(R.id.btnSignup);
-            //Back = (Button) findViewById(R.id.btnBack);
+
             lastname = (EditText) findViewById(R.id.etLastName);
             firstname = (EditText) findViewById(R.id.etFirstName);
             username = (EditText) findViewById(R.id.etUsername);
@@ -34,21 +43,33 @@ public class SignupActivity extends Activity {
             confirmpass = (EditText) findViewById(R.id.etConfirmPass);
             emailaddress = (EditText) findViewById(R.id.etEmail);
 
+
             String lname = lastname.getText().toString();
             String fname = firstname.getText().toString();
             String user = username.getText().toString();
             String pass = password.getText().toString();
             String confirmPass = confirmpass.getText().toString();
             String emailadd = emailaddress.getText().toString();
+            lastname.requestFocus();
 
-            if (!pass.equals(confirmPass))
-            {
+
+
+            if (!pass.equals(confirmPass)) {
                 Toast pop = Toast.makeText(SignupActivity.this, "Password doesn`t match!", Toast.LENGTH_SHORT);
                 pop.show();
             }
 
+
             else
             {
+
+               // Log.d(TAG, "signUp");
+                if (!validateForm())
+                {
+                    return;
+                }
+
+
                 UserInformation userinfo  = new UserInformation();
                 userinfo.setLastName(lname);
                 userinfo.setFirstName(fname);
@@ -65,5 +86,80 @@ public class SignupActivity extends Activity {
                 startActivity(intent);
             }
         }
+
+    public boolean validateForm() {
+        boolean result = true;
+        
+        if (TextUtils.isEmpty(lastname.getText().toString())) {
+            lastname.setError("Required");
+            result = false;
+        } else
+            {
+            lastname.setError(null);
+             }
+        //lastname
+        if (TextUtils.isEmpty(firstname.getText().toString())) {
+            firstname.setError("Required");
+            result = false;
+        }
+            else
+                {
+                firstname.setError(null);
+                }
+                //firstname
+        if (TextUtils.isEmpty(username.getText().toString()))
+        {
+            username.setError("Required");
+            result = false;
+        }
+            else
+            {
+            username.setError(null);
+            }
+        //username
+        if (TextUtils.isEmpty(password.getText().toString()))
+        {
+            password.setError("Required");
+            result = false;
+        }
+            else
+            {
+            password.setError(null);
+            }
+        //password
+        if (TextUtils.isEmpty(confirmpass.getText().toString()))
+        {
+            confirmpass.setError("Required");
+            result = false;
+        }
+            else
+            {
+            confirmpass.setError(null);
+            }
+        //confirmpass
+
+        if (TextUtils.isEmpty(emailaddress.getText().toString()) )
+        {
+            emailaddress.setError("Required");
+            result = false;
+        }
+            else
+            {
+                emailaddress.setError(null);
+            }
+            //email add
+
+        return result;
+        }
+
+    private String usernameFromEmail(String email) {
+        if (email.contains("@")) {
+            return email.split("@")[0];
+        } else {
+            return email;
+        }
+    }
+    //Function Call
+
     }
 //}
