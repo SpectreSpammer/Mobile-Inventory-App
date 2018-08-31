@@ -18,18 +18,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ACCUSERNAME = "UserName";
     private static final String COLUMN_ACCPASSWORD = "Password";
     private static final String COLUMN_ACCEmailAddress = "EmailAddress";
-    //Account Database and  Table Name
+
+    // Account Database and  Table Name
+
 
     public static final String TABLE_ITEMNAME = "Items";
     public static final String ITEMID = "ID";
     public static final String ITEMIMAGE = "IMAGE";
     public static final String ITEMNAME = "NAME";
     public static final String ITEMDESCRI = "DESCRIPTION";
-    //Items Table
+
+    // Items Table
 
     SQLiteDatabase db;
 
-    private static final String TABLE_ACCCREATE = "create table Account (id integer primary key not null, " +
+    private static final String TABLE_ACCCREATE = "create table MobileAccount (id integer primary key not null, " +
             "LastName text not null, FirstName text not null, UserName text not null, Password text not null, EmailAddress text not null)";
 
     private static final String TABLE_ITEMCREATE = "create table items (ID integer primary key not null, " +
@@ -43,9 +46,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
+
         db.execSQL(TABLE_ACCCREATE);
         db.execSQL(TABLE_ITEMCREATE);
         //this.db = db;
+
     }
 
     public  void insertUserinfo(UserInformation u) {
@@ -91,6 +96,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     //about Sign in activity
 
+
     public boolean addData(String image, String name, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -107,6 +113,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
     //items inserting of data
 
     public Cursor getListContents() {
@@ -124,6 +131,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         db.execSQL(query1);
         this.onCreate(db);
+
     }
 
 //    public String queryEditString(){
