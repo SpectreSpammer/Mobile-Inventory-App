@@ -14,6 +14,8 @@ public class SigninActivity extends AppCompatActivity {
     private Button Signin;
     private Button Back;
 
+    public static boolean loggedIn = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,9 @@ public class SigninActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, ItemListView.class);
                 intent.putExtra("Username", us);
                 startActivity(intent);
+
+                loggedIn = true;
+
             }
 
             else

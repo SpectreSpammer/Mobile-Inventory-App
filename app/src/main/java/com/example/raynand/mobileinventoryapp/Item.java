@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class Item implements Serializable{
 
     private String image, name, description;
+    Bitmap bitmap;
 
     public void setImage(String image) {
         this.image = image;
@@ -24,6 +25,10 @@ public class Item implements Serializable{
 
     public Item(){
 
+    }
+
+    public Item(Bitmap image){
+        this.image = bitmapToString(image);
     }
 
     public Item(Bitmap image, String name, String description){
@@ -69,5 +74,13 @@ public class Item implements Serializable{
     }
     public String getDescription() {
         return description;
+    }
+
+
+    public void setBitmap(Bitmap bitmap){
+        this.bitmap = bitmap;
+    }
+    public Bitmap getBitmap(){
+        return bitmap;
     }
 }

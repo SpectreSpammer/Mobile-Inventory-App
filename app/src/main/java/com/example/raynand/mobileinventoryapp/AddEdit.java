@@ -119,7 +119,6 @@ public class AddEdit extends AppCompatActivity {
     }
 
     public void AddData(String image, String name, String desc){
-
         boolean insertData = myDB.addData(image, name, desc);
 
         if(insertData) {

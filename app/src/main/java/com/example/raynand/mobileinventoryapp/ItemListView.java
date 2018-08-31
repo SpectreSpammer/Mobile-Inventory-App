@@ -60,4 +60,9 @@ public class ItemListView extends AppCompatActivity {
         Intent intent = new Intent(this, AddEdit.class);
         startActivity(intent);
     }
+
+    public void logOutClick(View v){
+        Intent intent = new Intent(ItemListView.this, SigninActivity.class);
+        startActivity(intent);
+    }
 }
