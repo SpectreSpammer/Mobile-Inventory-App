@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Mobile Inventory App</string>
+    <string name="username">com.example.raynand.mobileinventoryapp.username</string>
 </resources>

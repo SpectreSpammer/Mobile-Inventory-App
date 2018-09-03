@@ -2,6 +2,7 @@ package com.example.raynand.mobileinventoryapp;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -9,6 +10,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddEdit extends AppCompatActivity {
@@ -26,6 +29,7 @@ public class AddEdit extends AppCompatActivity {
 
     Bitmap bm;
     String imgToStr;
+    TextView tvUname;
     ImageView imageView;
     EditText etName, etDesc;
     Button btnAdd, btnCancel, addImage;
@@ -49,6 +53,12 @@ public class AddEdit extends AppCompatActivity {
         myDB = new DatabaseHelper(this);
         imageToStr = new Item();
 
+        tvUname = (TextView) findViewById(R.id.aetvUsername);//---------------------------------------------------
+        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);//---------------------------------------------------
+        SharedPreferences.Editor editor = mPreferences.edit();//---------------------------------------------------
+        String username = mPreferences.getString(getString(R.string.username),"");//---------------------------------------------------
+        tvUname.setText(username);//---------------------------------------------------
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,9 +72,6 @@ public class AddEdit extends AppCompatActivity {
                     Intent intent = new Intent(AddEdit.this, ItemListView.class);
 
                     AddData(imgToStr, name, description);
-
-                    etName.setText("");
-                    etDesc.setText("");
 
                     startActivity(intent);
 

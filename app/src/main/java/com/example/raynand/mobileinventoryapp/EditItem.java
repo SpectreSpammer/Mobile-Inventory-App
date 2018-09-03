@@ -1,12 +1,14 @@
 package com.example.raynand.mobileinventoryapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class EditItem extends AppCompatActivity {
@@ -29,6 +32,7 @@ public class EditItem extends AppCompatActivity {
     Item item, imageToStr;
     DatabaseHelper db;
     Bitmap bm;
+    TextView tvUname;
 
     //int itemID;
 
@@ -36,6 +40,12 @@ public class EditItem extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item);
+
+        tvUname = (TextView) findViewById(R.id.eiUsername);//---------------------------------------------------
+        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);//---------------------------------------------------
+        SharedPreferences.Editor editor = mPreferences.edit();//---------------------------------------------------
+        String username = mPreferences.getString(getString(R.string.username),"");//---------------------------------------------------
+        tvUname.setText(username);//---------------------------------------------------
 
         ivImage = (ImageView) findViewById(R.id.eiImageView);
         etName = (EditText) findViewById(R.id.eiName);
@@ -79,9 +89,6 @@ public class EditItem extends AppCompatActivity {
                     Intent intent1 = new Intent(EditItem.this, ItemListView.class);
 
                     AddData(imgToStr, name, description);
-
-                    etName.setText("");
-                    etDesc.setText("");
 
                     startActivity(intent1);
 
@@ -139,5 +146,4 @@ public class EditItem extends AppCompatActivity {
             Toast.makeText(EditItem.this, "Something went wrong!", Toast.LENGTH_LONG).show();
         }
     }
-
 }

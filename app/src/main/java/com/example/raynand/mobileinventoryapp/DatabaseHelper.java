@@ -23,14 +23,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Account Database and  Table Name
 
-
     public static final String TABLE_ITEMNAME = "Items";
     public static final String ITEMID = "ID";
+//    public static final String ITEMUSERNAME = "USERNAME";
     public static final String ITEMIMAGE = "IMAGE";
     public static final String ITEMNAME = "NAME";
     public static final String ITEMDESCRI = "DESCRIPTION";
 
     // Items Table
+
+    public static final String TABLE_USERITEM = "User_Items";
 
     SQLiteDatabase db;
 
@@ -98,7 +100,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     //about Sign in activity
 
-//    public long addData(String image, String name, String description) {
     public boolean addData(String image, String name, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -108,8 +109,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(ITEMDESCRI, description);
 
         long result = db.insert(TABLE_ITEMNAME, null, contentValues);
-
-//        return db.insert(TABLE_ITEMNAME, null, contentValues);
 
         if(result == -1){
             return false;
@@ -135,19 +134,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
         db.execSQL(query1);
         this.onCreate(db);
-
     }
 
     public void deleteRow(String desc) {
         SQLiteDatabase database = this.getWritableDatabase();
         database.execSQL("DELETE FROM " + TABLE_ITEMNAME + " WHERE " + ITEMDESCRI + " = '" + desc + "'");
-        database.close();
-    }
-
-    //get ID of row from the item clicked in the listview
-    public void deleteRow1(int ID){
-        SQLiteDatabase database = this.getWritableDatabase();
-        database.execSQL("DELETE FROM " + TABLE_ITEMNAME + " WHERE " + ITEMID + " = '" + ID + "'");
         database.close();
     }
 }

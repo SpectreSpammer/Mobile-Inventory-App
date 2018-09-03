@@ -1,6 +1,8 @@
 package com.example.raynand.mobileinventoryapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,12 +16,17 @@ public class SigninActivity extends AppCompatActivity {
     private Button Signin;
     private Button Back;
 
-    public static boolean loggedIn = false;
+    private SharedPreferences mPreferences;//
+    private SharedPreferences.Editor mEditor;//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
+
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(this);//
+        mEditor = mPreferences.edit();//
+        checkSharedPreferences();//
     }
 
     public void onClickSignin (View v)
@@ -38,8 +45,9 @@ public class SigninActivity extends AppCompatActivity {
                 intent.putExtra("Username", us);
                 startActivity(intent);
 
-                loggedIn = true;
-
+                String username = uname.getText().toString();//
+                mEditor.putString(getString(R.string.username), username);//
+                mEditor.commit();//
             }
 
             else
@@ -49,5 +57,8 @@ public class SigninActivity extends AppCompatActivity {
 
             }
         }
+    }
+    private void checkSharedPreferences(){
+        String name = mPreferences.getString(getString(R.string.username), "");
     }
 }
