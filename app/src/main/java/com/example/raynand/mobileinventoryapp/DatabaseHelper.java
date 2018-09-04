@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
+import android.database.DatabaseUtils;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -25,7 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_ITEMNAME = "Items";
     public static final String ITEMID = "ID";
-//    public static final String ITEMUSERNAME = "USERNAME";
+    public static final String ITEMUSERNAME = "USERNAME";
     public static final String ITEMIMAGE = "IMAGE";
     public static final String ITEMNAME = "NAME";
     public static final String ITEMDESCRI = "DESCRIPTION";
@@ -39,8 +40,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_ACCCREATE = "create table Account (id integer primary key not null, " +
             "LastName text not null, FirstName text not null, UserName text not null, Password text not null, EmailAddress text not null)";
 
-    private static final String TABLE_ITEMCREATE = "create table items (ID integer primary key not null, " +
-            "IMAGE text not null, NAME text not null, DESCRIPTION text not null)";
+    private static final String TABLE_ITEMCREATE = "create table Items (ID integer primary key not null, " +
+            "USERNAME text, IMAGE text, NAME text, DESCRIPTION text)";
+
+//    private static final String TABLE_ITEMCREATE = "create table Items (ID integer primary key not null, " +
+//            "IMAGE text not null, NAME text not null, DESCRIPTION text not null)";
 
     DatabaseHelper(Context context)
     {
@@ -100,10 +104,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     //about Sign in activity
 
-    public boolean addData(String image, String name, String description) {
+    public boolean addData(String username, String image, String name, String description) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
+        contentValues.put(ITEMUSERNAME, username);
         contentValues.put(ITEMIMAGE, image);
         contentValues.put(ITEMNAME, name);
         contentValues.put(ITEMDESCRI, description);
@@ -116,20 +121,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+    //items inserting of data, INSERTS ITEM DATA INTO DATABASE
 
-    //items inserting of data
+//    public Cursor getListContents() {
+//        SQLiteDatabase db = this.getWritableDatabase();
+////        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_ITEMNAME, null);
+//
+//        return data;
+//    }
 
-    public Cursor getListContents() {
+    public Cursor getListContents(String username) {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_ITEMNAME, null);
+        Cursor data = db.rawQuery("SELECT * FROM " + TABLE_ITEMNAME + " WHERE " + ITEMUSERNAME + " = '" + username + "'", null);
+
         return data;
     }
+    //HELPS DISPLAY ITEMS ONTO LISTVIEW
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String query = "DROP TABLE IF EXISTS " + TABLE_ACCNAME;
         String query1 = "DROP TABLE IF EXISTS " + TABLE_ITEMNAME;
-        //String query = "DROP TABLE IF EXIST" + TABLE_NAME;
 
         db.execSQL(query);
         db.execSQL(query1);

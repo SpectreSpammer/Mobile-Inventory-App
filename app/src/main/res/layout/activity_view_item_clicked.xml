@@ -67,7 +67,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/btn_border_black1"
+            android:background="@android:color/holo_green_light"
             android:text="Edit"
             tools:layout_editor_absoluteX="207dp"
             tools:layout_editor_absoluteY="394dp" />
@@ -77,7 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/btn_border_black"
+            android:background="@android:color/holo_blue_dark"
             android:text="Delete"
             tools:layout_editor_absoluteX="72dp"
             tools:layout_editor_absoluteY="394dp" />

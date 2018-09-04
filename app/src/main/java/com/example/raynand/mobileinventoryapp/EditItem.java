@@ -27,7 +27,7 @@ public class EditItem extends AppCompatActivity {
 
     ImageView ivImage;
     EditText etName, etDesc;
-    String rcvName, rcvDesc, imgToStr;
+    String rcvName, rcvDesc, imgToStr, username;
     Button editImage, saveItem, cancelBtn;
     Item item, imageToStr;
     DatabaseHelper db;
@@ -44,7 +44,7 @@ public class EditItem extends AppCompatActivity {
         tvUname = (TextView) findViewById(R.id.eiUsername);//---------------------------------------------------
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);//---------------------------------------------------
         SharedPreferences.Editor editor = mPreferences.edit();//---------------------------------------------------
-        String username = mPreferences.getString(getString(R.string.username),"");//---------------------------------------------------
+        username = mPreferences.getString(getString(R.string.username),"");//---------------------------------------------------
         tvUname.setText(username);//---------------------------------------------------
 
         ivImage = (ImageView) findViewById(R.id.eiImageView);
@@ -88,7 +88,7 @@ public class EditItem extends AppCompatActivity {
                 if(name.length()!= 0 && description.length()!= 0){
                     Intent intent1 = new Intent(EditItem.this, ItemListView.class);
 
-                    AddData(imgToStr, name, description);
+                    AddData(username, imgToStr, name, description);
 
                     startActivity(intent1);
 
@@ -138,8 +138,8 @@ public class EditItem extends AppCompatActivity {
         }
     }
 
-    public void AddData(String image, String name, String desc){
-        boolean insertData = db.addData(image, name, desc);
+    public void AddData(String username, String image, String name, String desc){
+        boolean insertData = db.addData(username, image, name, desc);
         if(insertData) {
             Toast.makeText(EditItem.this, "Data inserted successfully!", Toast.LENGTH_LONG).show();
         } else {

@@ -28,7 +28,7 @@ public class AddEdit extends AppCompatActivity {
     private static final int RESULT_LOAD_IMAGE = 1;
 
     Bitmap bm;
-    String imgToStr;
+    String imgToStr, username;
     TextView tvUname;
     ImageView imageView;
     EditText etName, etDesc;
@@ -56,7 +56,7 @@ public class AddEdit extends AppCompatActivity {
         tvUname = (TextView) findViewById(R.id.aetvUsername);//---------------------------------------------------
         SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);//---------------------------------------------------
         SharedPreferences.Editor editor = mPreferences.edit();//---------------------------------------------------
-        String username = mPreferences.getString(getString(R.string.username),"");//---------------------------------------------------
+        username = mPreferences.getString(getString(R.string.username),"");//---------------------------------------------------
         tvUname.setText(username);//---------------------------------------------------
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +71,8 @@ public class AddEdit extends AppCompatActivity {
                 if(name.length()!= 0 && description.length()!= 0){
                     Intent intent = new Intent(AddEdit.this, ItemListView.class);
 
-                    AddData(imgToStr, name, description);
+//                    AddData(imgToStr, name, description);
+                    AddData(username, imgToStr, name, description);
 
                     startActivity(intent);
 
@@ -133,13 +134,14 @@ public class AddEdit extends AppCompatActivity {
         }
     }
 
-    public void AddData(String image, String name, String desc){
+    public void AddData(String username, String image, String name, String desc) {
 
-        boolean insertData = myDB.addData(image, name, desc);
-        if(insertData) {
-            Toast.makeText(AddEdit.this, "Data inserted successfully!", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(AddEdit.this, "Something went wrong!", Toast.LENGTH_LONG).show();
-        }
+        myDB.addData(username, image, name, desc);
+//        boolean insertData = myDB.addData(image, name, desc);
+//        if(insertData) {
+//            Toast.makeText(AddEdit.this, "Data inserted successfully!", Toast.LENGTH_LONG).show();
+//        } else {
+//            Toast.makeText(AddEdit.this, "Something went wrong!", Toast.LENGTH_LONG).show();
+//    }
     }
 }

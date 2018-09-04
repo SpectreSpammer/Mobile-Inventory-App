@@ -23,38 +23,53 @@ public class ItemListView extends AppCompatActivity {
     String username;
 
     Item item;
-    int userLoggedIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_list_view);
 
-//        tvUname = (TextView) findViewById(R.id.ilvTextView);//---------------------------------------------------
-//        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);//---------------------------------------------------
-//        SharedPreferences.Editor editor = mPreferences.edit();//---------------------------------------------------
-//        String name = mPreferences.getString(getString(R.string.name),"");//---------------------------------------------------
-//        tvUname.setText(name);//---------------------------------------------------
+        tvUname = (TextView) findViewById(R.id.ilvTextView);//---------------------------------------------------
+        SharedPreferences mPreferences = PreferenceManager.getDefaultSharedPreferences(this);//---------------------------------------------------
+        SharedPreferences.Editor editor = mPreferences.edit();//---------------------------------------------------
+        username = mPreferences.getString(getString(R.string.username),"");//---------------------------------------------------
+        tvUname.setText(username);//---------------------------------------------------
 
         listView = (ListView) findViewById(R.id.listView);
         myDB = new DatabaseHelper(this);
         itemList = new ArrayList<>();
-        Cursor data = myDB.getListContents();
 
-        //TODO: connect users with their items if(userExists==true){}
+//        Cursor data = myDB.getListContents();
 
-        int numRows = data.getCount();
-        if(numRows == 0){
-            Toast.makeText(ItemListView.this, "There is nothing in the database.", Toast.LENGTH_SHORT).show();
-        } else {
-            while(data.moveToNext()){
-                item = new Item(data.getString(1), data.getString(2), data.getString(3));
-                itemList.add(item);
+        if(username!=null){
+            Cursor data = myDB.getListContents(username);
+            int numRows = data.getCount();
+            if(numRows == 0){
+                Toast.makeText(ItemListView.this, "There is nothing in the database.", Toast.LENGTH_SHORT).show();
+            } else {
+                while(data.moveToNext()){
+                    item = new Item(data.getString(1), data.getString(2), data.getString(3), data.getString(4));
+                    itemList.add(item);
+                }
+                Row_ListAdapter adapter = new Row_ListAdapter(this, R.layout.list_adapter_view, itemList);
+                listView = (ListView) findViewById(R.id.listView);
+                listView.setAdapter(adapter);
             }
-            Row_ListAdapter adapter = new Row_ListAdapter(this, R.layout.list_adapter_view, itemList);
-            listView = (ListView) findViewById(R.id.listView);
-            listView.setAdapter(adapter);
         }
+        //
+
+//        int numRows = data.getCount();
+//        if(numRows == 0){
+//            Toast.makeText(ItemListView.this, "There is nothing in the database.", Toast.LENGTH_SHORT).show();
+//        } else {
+//            while(data.moveToNext()){
+//                item = new Item(data.getString(1), data.getString(2), data.getString(3), data.getString(4));
+//                itemList.add(item);
+//            }
+//            Row_ListAdapter adapter = new Row_ListAdapter(this, R.layout.list_adapter_view, itemList);
+//            listView = (ListView) findViewById(R.id.listView);
+//            listView.setAdapter(adapter);
+//        }
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -76,7 +91,7 @@ public class ItemListView extends AppCompatActivity {
     }
 
     public void logOutClick(View v){
-        Intent intent = new Intent(ItemListView.this, SigninActivity.class);
+        Intent intent = new Intent(ItemListView.this, StartPageActivity.class);
         startActivity(intent);
     }
 }

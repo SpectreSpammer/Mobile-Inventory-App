@@ -8,8 +8,12 @@ import java.io.Serializable;
 
 public class Item implements Serializable{
 
-    private String image, name, description;
+    private String username, image, name, description;
     Bitmap bitmap;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public void setImage(String image) {
         this.image = image;
@@ -22,6 +26,7 @@ public class Item implements Serializable{
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     public Item(){
 
@@ -42,6 +47,15 @@ public class Item implements Serializable{
         this.name=name;
         this.description=description;
     }
+
+    //
+    public Item(String username, String image, String name, String description){
+        this.username=username;
+        this.image=image;
+        this.name=name;
+        this.description=description;
+    }
+    //
 
     public Bitmap getImage(){
         return stringToBitmap(this.image);
@@ -67,6 +81,10 @@ public class Item implements Serializable{
             exception.printStackTrace();
         }
         return bitmap;
+    }
+
+    public String getUsername(){
+        return username;
     }
 
     public String getName() {
